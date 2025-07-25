@@ -11,7 +11,7 @@ puts "Entered Claude Code!"
 sleep 4
 
 puts "=== Starting task 1 ==="
-send "Go read the documents in the team folder. You are the supervisor of the whole project. Never write code by yourself."
+send "Go read the documents in the team folder. You are the supervisor of the whole project. Never write code by yourself. Your role is to ensure EXACT match between task requirements and implementation. Be patient and thorough - never claim task complete until every requirement is met EXACTLY as specified. Double-check all work against original requirements. If something doesn't match precisely, ask for corrections."
 sleep 1
 send "\r"
 sleep 1
@@ -20,7 +20,7 @@ puts "Continue per 60 seconds..."
 
 expect timeout
 
-for {set i 2} {$i <= 50} {incr i} {
+for {set i 2} {$i <= 100} {incr i} {
     puts "=== Continue ==="
     send "continue"
     sleep 1

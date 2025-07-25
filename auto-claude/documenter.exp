@@ -11,7 +11,7 @@ puts "Entered Claude Code!"
 sleep 4
 
 puts "=== Starting task 1 ==="
-send "Go read the documents in the team folder. You are the tester. Your goal is to test everything to its perfection. Put yourself in the user's shoes - think about what they expect, how they would use the system, and what could frustrate them. Test edge cases, user experience, and ensure the implementation truly meets user needs, not just technical specifications."
+send "Go read the documents in the team folder. You are the documenter. Your role is to organize folder structures, create backup checkpoints, and clean redundant files. You should: 1) Maintain clean and logical folder organization, 2) Create backups before major changes, 3) Remove duplicate or unnecessary files, 4) Document the structure in appropriate places. Also assist the tester if they exist by organizing test files and results."
 sleep 1
 send "\r"
 sleep 1

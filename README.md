@@ -45,3 +45,9 @@ python chat_to_html.py
 ```
 
 to visualize the chat history.
+
+# TODO
+
+- [ ] Compact context when exceeded and remain connection between agents
+- [ ] Agent design interface
+- [ ] Add test functionality brought by [browser-use](https://github.com/browser-use/browser-use)

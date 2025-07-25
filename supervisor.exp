@@ -1,0 +1,36 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+log_user 1
+
+spawn claude --dangerously-skip-permissions
+
+sleep 7
+send "2"
+puts "Entered Claude Code!"
+sleep 4
+
+puts "=== Starting task 1 ==="
+send "Go read the documents in the team folder. You are the supervisor of the whole project. Never write code by yourself."
+sleep 1
+send "\r"
+sleep 1
+send "\r"
+puts "Continue per 60 seconds..."
+
+expect timeout
+
+for {set i 2} {$i <= 10} {incr i} {
+    puts "=== Continue ==="
+    send "continue"
+    sleep 1
+    send "\r"
+    puts "Continue per 60 seconds..."
+    expect timeout
+}
+
+puts "=== All done! ==="
+send "exit"
+sleep 1
+send "\r"
+expect eof

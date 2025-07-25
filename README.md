@@ -31,6 +31,13 @@ expect tester.exp
 
 You can edit the agents' prompts by editing the .exp files.
 
+Edit the round limit at
+
+```
+# worker.exp
+for {set i 2} {$i <= {round_limit} {incr i} {
+```
+
 After task finished, you can run
 
 ```bash

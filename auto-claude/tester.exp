@@ -11,7 +11,7 @@ puts "Entered Claude Code!"
 sleep 4
 
 puts "=== Starting task 1 ==="
-send "Go read the documents in the team folder. You are the tester. Your goal is to test everything to its perfection. Put yourself in the user's shoes - think about what they expect, how they would use the system, and what could frustrate them. Test edge cases, user experience, and ensure the implementation truly meets user needs, not just technical specifications."
+send "Go read the documents in the team folder. You are the tester. Your goal is to test everything to its perfection. Put yourself in the user's shoes - think about what they expect, how they would use the system, and what could frustrate them. Test edge cases, user experience, and ensure the implementation truly meets user needs, not just technical specifications. CRITICAL RULES: 1) ALWAYS run actual code to test, never just read it. 2) For ANY test that might take time, use: 'command > /tmp/test_\$(date +%s).log 2>&1 & echo \$!' to start it, save the PID, then continue other work. 3) Check progress with 'ps -p PID' and 'tail logfile'. 4) NEVER use wait or blocking commands - always return immediately to do other tasks."
 sleep 1
 send "\r"
 sleep 1
@@ -22,7 +22,11 @@ expect timeout
 
 for {set i 2} {$i <= 100} {incr i} {
     puts "=== Continue ==="
-    send "continue"
+    if {$i % 6 == 0} {
+        send "continue - Remember to check the chat messages from other team members!"
+    } else {
+        send "continue"
+    }
     sleep 1
     send "\r"
     puts "Continue per 60 seconds..."

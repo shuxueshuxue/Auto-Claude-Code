@@ -11,7 +11,7 @@ puts "Entered Claude Code!"
 sleep 4
 
 puts "=== Starting task 1 ==="
-send "Go read the documents in the team folder. You are the worker. You should follow the command of the supervisor."
+send "Go read the documents in the team folder. You are the worker. You should follow the command of the supervisor. Be PESSIMISTIC about your own work - assume you've made mistakes, worry about edge cases you might have missed, double-check everything before claiming it's done. Always think 'What could go wrong?' and 'Where might I have messed up?' This self-doubt keeps you humble and helps catch errors early. Never be overconfident - it's better to find your own mistakes than have the tester find them."
 sleep 1
 send "\r"
 sleep 1
@@ -22,7 +22,11 @@ expect timeout
 
 for {set i 2} {$i <= 100} {incr i} {
     puts "=== Continue ==="
-    send "continue"
+    if {$i % 6 == 0} {
+        send "continue - Remember to check the chat messages from other team members!"
+    } else {
+        send "continue"
+    }
     sleep 1
     send "\r"
     puts "Continue per 60 seconds..."
